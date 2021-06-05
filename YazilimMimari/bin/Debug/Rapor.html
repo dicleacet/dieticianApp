@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <div class="alert alert-dark w-100 display-4 text-center">
+        Diyetisyen Raporu
+    </div>
+    <meta charset="utf-8">
+    <title>Rapor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <style>
+        ::-webkit-scrollbar {
+            width: 10px;
+            background-color: #E3E0CF;
+
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #A8B6BF;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #A8B6BF;
+        }
+
+        ::-webkit-scrollbar-thumb:active {
+            background-color: #A8B6BF;
+        }
+    </style>
+</head>
+
+<body style="background-color: #E3E0CF;">
+    <script>
+        let object;
+        let httpRequest = new XMLHttpRequest(); // asynchronous request
+        httpRequest.open("GET", "http://127.0.0.1:5500/Rapor.json", true);
+        httpRequest.send();
+        httpRequest.addEventListener("readystatechange", function () {
+            if (this.readyState === this.DONE) {
+                // when the request has completed
+                object = JSON.parse(this.response);
+                console.log(object);
+                document.getElementById("name").innerHTML = object.kullaniciAd;
+                document.getElementById("surname").innerHTML = object.kullaniciSoyad;
+                document.getElementById("ID").innerHTML = object.kullaniciTc;
+                document.getElementById("diyetisyenAd").innerHTML = object.diyetisyenAd;
+                document.getElementById("hastalik").innerHTML = object.kullaniciHastalik;
+                document.getElementById("diyet").innerHTML = object.kullaniciDiyet;
+
+            }
+        });
+    </script>
+
+
+    <div class="row w-100" style="margin-top: 7%;">
+        <div class="d-flex justify-content-around w-100">
+            <div class="alert alert-info w-25 text-center ">
+                <p class="h5">Ad</p>
+            </div>
+            <div class="alert alert-info w-25 text-center">
+                <p id="name" class="h5"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row w-100">
+        <div class="d-flex justify-content-around w-100">
+            <div class="alert alert-info w-25 text-center ">
+                <p class="h5">Soyad</p>
+            </div>
+            <div class="alert alert-info w-25 text-center">
+                <p id="surname" class="h5"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row w-100">
+        <div class="d-flex justify-content-around w-100">
+            <div class="alert alert-info w-25 text-center ">
+                <p class="h5">TC</p>
+            </div>
+            <div class="alert alert-info w-25 text-center">
+                <p id="ID" class="h5"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row w-100">
+        <div class="d-flex justify-content-around w-100">
+            <div class="alert alert-info w-25 text-center">
+                <p class="h5">Diyetisyen</p>
+            </div>
+            <div class="alert alert-info w-25 text-center">
+                <p id="diyetisyenAd" class="h5"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert alert-danger w-25 text-center" style="margin-top: 3%;">
+        <p class="h5">Hastalık bilgisi :</p>
+    </div>
+    <div class="card w-75" style="margin-left: 2%;">
+
+        <div class="card-body" id="hastalik">
+        </div>
+    </div>
+
+    <div class="alert alert-success w-25 text-center" style="margin-top: 3%;">
+        <p class="h5">Diyet :</p>
+    </div>
+    <div class="card w-75" style="margin-left: 2%;">
+
+        <div class="card-body" id="diyet">
+        </div>
+    </div>
+    <div class=" container w-100 h-25"><br /><br /><br /><br /><br /></div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
